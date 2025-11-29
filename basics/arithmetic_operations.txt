@@ -1,0 +1,46 @@
+package main
+
+import (
+	"fmt"
+	 "math"
+)
+
+func main() {
+	var a, b float64 = 10, 3
+
+	// addition
+	fmt.Println("Addition:", a+b)
+	// subtraction
+	fmt.Println("Subtraction:", a-b)
+	// multiplication
+	fmt.Println("Multiplication:", a*b)
+	// division
+	fmt.Println("Division:", a/b)
+	// modulus
+	// fmt.Println("Modulus:", a % b)
+
+	var maxInt int64 = 9223372036854775807 // Maximum value for int64
+	fmt.Println(maxInt)
+	maxInt += 1
+	fmt.Println(maxInt)
+	var minInt int64 = -9223372036854775808 // Minimum value for int64
+	fmt.Println(minInt)
+	minInt -= 1
+	fmt.Println(minInt)
+
+	var maxUint uint64 = 18446744073709551615 // Maximum value for uint64
+	fmt.Println(maxUint)
+	maxUint += 1
+	fmt.Println(maxUint)
+	var minUint uint64 = 0 // Minimum value for uint64
+	fmt.Println(minUint)
+	minUint -= 1
+	fmt.Println(minUint)
+
+	fmt.Println("-------------------------")
+	var smallFloat float64 = 1.0e-300 // A very small float64 value
+	fmt.Println(smallFloat)
+		smallFloat = smallFloat / math.MaxFloat64 
+	fmt.Println(smallFloat)
+
+}

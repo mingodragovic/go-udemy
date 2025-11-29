@@ -1,0 +1,7 @@
+package main 
+
+
+func main() {
+const Pi = 3.14159
+const Greeting = "Hello, World!"
+}
