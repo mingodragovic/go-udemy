@@ -1,0 +1,17 @@
+package main 
+
+func main() {
+statement, total := Sum("The total is: ", numsArray...)
+println(statement, total)
+}
+var numsArray = []int{1,2,3,7,8,9}
+
+func Sum(statement string,nums ...int) (string,int){
+	total := 0
+	for _,v := range nums {
+		total += v
+		
+	}
+	return statement,total
+	
+}

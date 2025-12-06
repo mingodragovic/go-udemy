@@ -1,0 +1,36 @@
+package main 
+
+
+import "fmt"
+
+func main() {
+	a, b := multipleReturns()
+	fmt.Println("First value:", a)
+	fmt.Println("Second value:", b)
+
+	quotient, remainder := divideAndRemainder(10, 3)
+	fmt.Println("Quotient:", quotient)
+	fmt.Println("Remainder:", remainder)
+
+	// error handling example
+	result, err := safeDivide(10, 0)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Result:", result)
+	}
+}
+
+func divideAndRemainder(x, y int) (int, int) {
+	return x / y, x % y
+}
+
+func multipleReturns() (int, int) {
+	return 1, 2
+}
+func safeDivide(x, y int) (int, error) {
+	if y == 0 {
+		return 0, fmt.Errorf("division by zero")
+	}
+	return x / y, nil
+}

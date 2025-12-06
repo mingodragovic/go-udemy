@@ -1,0 +1,13 @@
+package main 
+
+
+import "fmt"
+
+func main() {
+Process()
+}
+func Process () {
+	defer fmt.Println("Process Complete")
+	defer fmt.Println("Cleaning up resources")
+	fmt.Println("Processing...")
+}

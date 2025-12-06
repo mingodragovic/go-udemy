@@ -1,0 +1,37 @@
+package main 
+
+
+import "fmt"
+
+func main() {
+// var arrayNAme [size]type
+	 arr:= [5]int {10, 20, 30, 40, 50} // Declare an array of 5 integers
+	fmt.Println(arr)
+
+	 fruits := [3]string{"Apple", "Banana", "Cherry"} // Declare and initialize an array of strings
+	fmt.Println(fruits)
+	copyOfArr := arr // Copying the array
+	copyOfArr[0] = 100 // Modifying the copied array does not affect the original
+	fmt.Println(arr) // Original array remains unchanged
+	fmt.Println(copyOfArr)
+	for i := 0 ; i < len(arr); i++ {
+		fmt.Println(arr[i]) // Accessing elements using index
+	}
+	for _, value := range fruits {
+		fmt.Printf(" Value: %s\n", value) // Using range to iterate over the array
+	}
+	var matrix [2][3][5]int = [2][3][5]int{
+		{
+			{1, 2, 3, 0, 0},
+			{4, 5, 6, 0, 0},
+			{7, 8, 9, 10, 11},
+		},
+		{
+			{12, 13, 14, 15, 16},
+			{17, 18, 19, 20, 21},
+			{22, 23, 24, 25, 26},
+		},
+	}
+
+	fmt.Println(matrix)
+}

@@ -1,0 +1,63 @@
+package main
+
+import (
+	"fmt"
+	"slices"
+)
+
+func main() {
+ // var sliceName []dataType
+numbers := []int{10, 20, 30, 40, 50}
+slice := numbers[1:4] // Slicing from index 1 to 3
+fmt.Println("Original Slice:", slice)
+fmt.Println("Numbers Slice:", numbers) 
+slice = append(slice, 60) // Appending 60 to the slice
+fmt.Println("Modified Slice:", slice)
+sliceCopy := make([]int, len(slice))
+copy(sliceCopy, slice)
+fmt.Println("copy slice",sliceCopy)
+
+fmt.Println("Numbers Slice after append:", numbers)
+
+for i,v := range numbers {
+	fmt.Printf("Index: %d, Value: %d\n", i, v)}
+
+
+	if slices.Equal(slice,sliceCopy) {
+		fmt.Println("The slices are equal.")
+	} else {
+		fmt.Println("The slices are not equal.")
+	}
+
+	// multi dimensional slice
+	matrix := [][]int{
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9},
+	}
+	fmt.Println("2D Slice (Matrix):", matrix)	
+
+threeDSlice := make([][][]int, 3)
+fmt.Println("Initial 3D Slice:", threeDSlice)
+for i := range threeDSlice {
+    threeDSlice[i] = make([][]int, 3)
+	fmt.Println("first :", threeDSlice)
+
+
+    for j := range threeDSlice[i] {
+        threeDSlice[i][j] = make([]int, 3) // initialize inner slice
+		fmt.Println("second :", threeDSlice)
+
+
+        for k := range threeDSlice[i][j] {
+            threeDSlice[i][j][k] = i + j + k // assign a value
+			fmt.Println("third :", threeDSlice)
+
+        }
+    }
+}
+
+fmt.Println("3D Slice:", threeDSlice)
+
+
+}

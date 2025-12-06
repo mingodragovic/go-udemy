@@ -1,0 +1,25 @@
+package main 
+
+
+import "fmt"
+
+func main() {
+process(5)
+safeProcess(-45)
+}
+func process(input int) {
+	if input < 0 {
+		panic("Negative input not allowed")
+	}
+	fmt.Println("Processing input:", input)
+	
+}
+// Recover example : 
+func safeProcess(input int) {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered from panic:", r)
+		}
+	}()
+	process(input)
+}

@@ -1,0 +1,44 @@
+package main
+
+import (
+	"fmt"
+	"maps"
+)
+
+func main() {
+
+m := make(map[string]int)
+m["one"] = 1
+m["two"] = 2
+fmt.Println(m)
+newMap := map[string]int{"three": 3, "four": 4}
+fmt.Println(newMap)
+delete(m, "one")
+fmt.Println(m)
+value, exists := m["two"]
+if exists {
+    fmt.Println("Value for 'two':", value)
+} else {
+    fmt.Println("'two' does not exist in the map")
+}
+if maps.Equal(m,newMap) {
+	fmt.Println("Maps are equal")
+}else {
+	fmt.Println("Maps are not equal")
+}
+for key, value := range newMap {
+	fmt.Printf("%s: %d\n", key, value)
+}
+for _ ,value := range newMap {
+	fmt.Printf("%d\n",  value)
+}
+var myMap2 = make(map[string]int)
+myMap2["five"] = 5
+myMap2["six"] = 6
+fmt.Println(myMap2)
+if myMap2 == nil {
+	fmt.Println("myMap2 is nil")
+} else {
+    fmt.Println("myMap2 is not nil")
+}
+}

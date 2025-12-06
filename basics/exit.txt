@@ -1,0 +1,12 @@
+package main 
+
+
+import "fmt"
+
+func main() {
+
+}
+// exit example 
+func exitExample() {
+	fmt.Println("This is an example of exit function.")
+}
