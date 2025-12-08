@@ -1,0 +1,32 @@
+package main 
+
+
+import "fmt"
+
+func main() {
+sequence := adder()
+
+fmt.Println(sequence())
+fmt.Println(sequence())
+fmt.Println(sequence())
+fmt.Println(sequence())
+// mainAdded := func() func(int) int {
+// 	i := 0
+// 	return func(x int) int {
+// 		i += x
+// 		return i
+// 	}
+// }()
+
+}
+func adder () func() int {
+i := 0
+fmt.Println("previous value of i :",i)
+return func() int {
+i++
+fmt.Println("added 1 to i")
+return i
+
+}
+
+}

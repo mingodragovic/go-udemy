@@ -1,0 +1,36 @@
+package main 
+
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, World!")
+	// scanning fmt example 
+	var name string
+	fmt.Print("Enter your name: ")
+	fmt.Scanln(&name)
+	fmt.Printf("Hello, %s!\n", name)
+	// scanF example
+	var age int
+	fmt.Print("Enter your age: ")
+	fmt.Scanf("%d", &age)
+	fmt.Printf("You are %d years old.\n", age)
+val, err := checkAge(-24)
+if err != nil {
+	fmt.Println("Error:", err)
+} else {
+	fmt.Printf("Checked age: %d\n", val)
+}
+// error formatting example
+}
+
+// Move checkAge outside of main
+func checkAge(age int) (int, error) {
+	if age < 0 {
+		err := fmt.Errorf("invalid age: %d", age)
+		return 0, err
+	} else {
+		fmt.Println("Valid age:", age)
+		return age, nil
+	}
+}

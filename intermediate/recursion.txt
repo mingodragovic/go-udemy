@@ -1,0 +1,31 @@
+package main
+
+import "fmt"
+
+func main() {
+fmt.Println(fibonacciRecursive(7))
+}
+func factorial(n int) int {
+	// base case
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
+func sumOfDigits(n int) int {
+	if n < 10 {
+		return n
+	}
+	return n % 10 * sumOfDigits(n/10)
+}
+func fibonacciRecursive(n int ) int{
+	    fmt.Println("Calling with n =", n)
+
+	if n == 0 {
+		return 0 
+	}
+		if n == 1 {
+			return 1 
+}
+	return fibonacciRecursive(n-1) + fibonacciRecursive(n-2)
+}

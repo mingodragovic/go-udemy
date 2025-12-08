@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+	var x int = 42
+	p := &x // p is a pointer to x
+
+	fmt.Println("Value of x:", x)           // Prints: Value of x: 42
+	fmt.Println("Address of x:", &x)       // Prints: Address of x: 0x...
+	fmt.Println("Value of p:", p)          // Prints: Value of p (address of x): 0x...
+	fmt.Println("Value pointed to by p:", *p) // Prints: Value pointed to by p: 42
+
+	modifyValue(p)
+	
+	modifyValue(p)
+	
+	modifyValue(p)
+	fmt.Println("Value of x after modifyValue:", x) // x is modified through pointer
+}
+
+func modifyValue(val *int) {
+	*val++
+}
