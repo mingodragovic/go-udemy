@@ -1,0 +1,27 @@
+package main 
+
+
+import "fmt"
+
+// struct Embeding example
+
+type Animal struct {
+	Name string
+	Age  int
+}
+type Dog struct {
+	Animal
+	Breed string
+}
+func main() {
+	d := Dog{
+		Animal: Animal{
+			Name: "Buddy",
+			Age:  3,
+		},
+		Breed: "Golden Retriever",
+	}
+	fmt.Println(d.Name)  // Output: Buddy
+	fmt.Println(d.Age)   // Output: 3
+	fmt.Println(d.Breed) // Output: Golden Retriever
+}

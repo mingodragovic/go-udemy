@@ -1,0 +1,126 @@
+// string_functions.go
+package main
+
+import (
+	"fmt"
+	"regexp"
+	"strconv"
+	"strings"
+	"unicode/utf8"
+)
+
+// Function to check if a string contains a substring
+func containsSubstring(str, substr string) bool {
+	return strings.Contains(str, substr)
+}
+func main() {
+	// Example usage
+	str := "Hello, World!"
+	substr := "World"
+	if containsSubstring(str, substr) {
+		fmt.Printf("The string '%s' contains the substring '%s'.\n", str, substr)
+	}	else {
+		fmt.Printf("The string '%s' does not contain the substring '%s'.\n", str, substr)
+	}
+	// Additional example
+	str2 := "Go programming"
+	substr2 := "Python"
+	if containsSubstring(str2, substr2) {
+		fmt.Printf("The string '%s' contains the substring '%s'.\n", str2, substr2)
+	}	else {
+		fmt.Printf("The string '%s' does not contain the substring '%s'.\n", str2, substr2)
+	}
+	// concat example 
+	str3 := "Hello"
+	str4 := "World"
+	concatStr := str3 + " " + str4
+	fmt.Printf("Concatenated string: '%s'\n", concatStr)
+
+	// string conversion example
+	num := 42
+	strNum := fmt.Sprintf("The number is: %d", num)
+	strNum2 := strconv.Itoa(num) // Convert int to string
+	// Print the converted string
+	fmt.Println(strNum)
+	fmt.Println(strNum2)
+// printing the type of the string
+	fmt.Printf("Type of strNum: %T\n", strNum)
+	fmt.Printf("Type of strNum2: %T\n", strNum2)
+	fmt.Printf("Type of concatStr: %T\n", concatStr)
+	fmt.Printf("Type of str: %T\n", str)
+	fmt.Printf("Type of substr: %T\n", substr)
+	fmt.Printf("Type of str2: %T\n", str2)
+	fmt.Printf("Type of substr2: %T\n", substr2)
+	// string split example
+	splitStr := strings.Split(str, ", ")
+	fmt.Printf("Split string: %v\n", splitStr)
+	fruits := "apple,banana,cherry"
+	splitFruits := strings.Split(fruits, ",")
+	fmt.Printf("Split fruits: %v\n", splitFruits)
+// string join example
+	joinedFruits := strings.Join(splitFruits, " & ")
+	fmt.Printf("Joined fruits: %s\n", joinedFruits)
+	// replace example
+	replacedStr := strings.Replace(str, "World", "Go", 1)
+	fmt.Printf("Replaced string: '%s'\n", replacedStr)
+		fmt.Printf("Replaced string: '%s'\n", strings.ReplaceAll(fruits, "a", "A"))
+		// replace many strings 
+	replacer := strings.NewReplacer("apple", "orange", "banana", "grape")
+	manyReplacedStr := replacer.Replace(fruits)
+	fmt.Printf("Many replaced string: '%s'\n", manyReplacedStr)
+// strings upper and lower
+	upperStr := strings.ToUpper(str)
+	lowerStr := strings.ToLower(str)
+	fmt.Printf("Uppercase string: '%s'\n", upperStr)
+	fmt.Printf("Lowercase string: '%s'\n", lowerStr)
+	// repeat example
+	repeatedStr := strings.Repeat("Go! ", 3)
+	fmt.Printf("Repeated string: '%s'\n", repeatedStr)
+	// trim example
+	trimmedStr := strings.TrimSpace("   Hello, Go!   ")
+	fmt.Printf("Trimmed string: '%s'\n", trimmedStr)
+	// count example
+	count := strings.Count(fruits, "a")
+	fmt.Printf("Count of 'a' in fruits: %d\n", count)
+	// has prefix and suffix example
+	hasPrefix := strings.HasPrefix(str, "Hello")
+	hasSuffix := strings.HasSuffix(str, "World!")
+	fmt.Printf("String has prefix 'Hello': %t\n", hasPrefix)
+	fmt.Printf("String has suffix 'World!': %t\n", hasSuffix)
+	// regexp example
+		str5 := "Hel1lo, 123 Go 11!"
+	re := regexp.MustCompile(`\d+`)
+	matches := re.FindAllString(str5, -1)
+	fmt.Println(matches)
+
+// utf8 example
+		str6 := "Hello"
+	fmt.Println(utf8.RuneCountInString(str6))
+		fmt.Println("length of the word is :",len(str6))
+		// explanation of len vs RuneCountInString
+	fmt.Printf("The string '%s' has length %d bytes, but contains %d runes (characters).\n", str6, len(str6), utf8.RuneCountInString(str6))
+
+// explaination of utf8 example
+	fmt.Printf("The string '%s' has %d runes (characters), including multi-byte characters like '世' and '界'.\n", str6, utf8.RuneCountInString(str6))
+
+
+		// STRING BUILDER
+	var sb strings.Builder
+	sb.WriteString("Hello")
+	sb.WriteString(", ")
+	sb.WriteString("World!")
+	finalStr := sb.String()
+	fmt.Printf("String built using strings.Builder: '%s'\n", finalStr)
+
+		// Using Writerune to add a character
+	var sb2 strings.Builder
+	sb2.WriteString("Go")
+	sb2.WriteRune('!')
+	finalStr2 := sb2.String()
+	fmt.Printf("String built using strings.Builder with WriteRune: '%s'\n", finalStr2)
+	
+	// Reset the builder
+	sb2.Reset()
+	sb2.WriteString("New String")
+	fmt.Printf("After reset, new string: '%s'\n", sb2.String())
+}

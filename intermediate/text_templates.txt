@@ -1,0 +1,68 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+	"text/template"
+)
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+
+	// Define named templates
+	templates := map[string]string{
+		"welcome":      "Welcome, {{.name}}! We're glad you joined.",
+		"notification": "{{.nm}}, you have a new notification: {{.ntf}}",
+		"error":        "Oops! An error occurred: {{.em}}",
+	}
+
+	// Parse and store templates
+	parsedTemplates := make(map[string]*template.Template)
+	for name, tmpl := range templates {
+		parsedTemplates[name] = template.Must(
+			template.New(name).Parse(tmpl),
+		)
+	}
+
+	for {
+		// Show menu
+		fmt.Println("\n1. Welcome")
+		fmt.Println("2. Notification")
+		fmt.Println("3. Error")
+		fmt.Println("4. Exit")
+		fmt.Print("Choose a template to execute: ")
+
+		choice, _ := reader.ReadString('\n')
+		choice = strings.TrimSpace(choice)
+
+		switch choice {
+		case "1":
+			data := map[string]interface{}{
+				"name": "Ilyes",
+			}
+			parsedTemplates["welcome"].Execute(os.Stdout, data)
+
+		case "2":
+			data := map[string]interface{}{
+				"nm":  "Ilyes",
+				"ntf": "You have a new message!",
+			}
+			parsedTemplates["notification"].Execute(os.Stdout, data)
+
+		case "3":
+			data := map[string]interface{}{
+				"em": "File not found",
+			}
+			parsedTemplates["error"].Execute(os.Stdout, data)
+
+		case "4":
+			fmt.Println("Exiting...")
+			return
+
+		default:
+			fmt.Println("Invalid choice")
+		}
+	}
+}

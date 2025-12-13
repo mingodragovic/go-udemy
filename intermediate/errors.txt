@@ -1,0 +1,72 @@
+// package main
+
+// import (
+// 	"errors"
+// 	"fmt"
+// )
+
+
+// // func process(data []byte) error {
+// // 	if len(data) == 0 {
+// // 		return errors.New(" whatever error")
+// // 	}
+// // 	return nil
+// // }
+
+
+// func main() {
+// // 	data := []byte{}
+// // 	if err := process(data) ; err != nil  {
+// // 		fmt.Println("Processing error:", err)
+
+// // 	return 
+// // }
+// // fmt.Println("Processing succeeded")
+
+// fmt.Println("--------------------")
+// 	err := &MyError{
+// 		Message: "Something went wrong",
+// 		Code:    404,
+// 	}
+// 	fmt.Println(err.Error())
+// Eerr := eprocess()
+// 	fmt.Println(Eerr.Error())
+// }
+
+// type MyError struct {
+// 	Message string
+// 	Code    int
+// }
+// func (e *MyError) Error() string {
+// 	return fmt.Sprintf("Error %d: %s", e.Code, e.Message)
+// }
+// func eprocess () error {
+// 	return &MyError{
+// 		Message: "Custom error occurred",
+// 		Code:    500,
+// 	}
+// }
+package main 
+
+
+import "fmt"
+
+func main() {
+	fmt.Println("--------------------")
+	err := &MyError{
+		Message: "Something went wrong",
+		Code:    404,
+	}
+
+	fmt.Println(err.Error())
+
+}
+func (e *MyError) Error() string {
+	return fmt.Sprintf("Error %d: %s", e.Code, e.Message)
+}
+func eprocess () error {
+	return &MyError{
+		Message: "Custom error occurred",
+		Code:    500,
+	}
+}

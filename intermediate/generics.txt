@@ -1,0 +1,22 @@
+package main 
+
+
+import "fmt"
+// generics.go
+// This is a simple example of using generics in Go.
+
+// Define a generic function that takes a slice of any type and returns its length.
+func Length[T any](s []T) int {
+	return len(s)
+}
+	// another generic example
+	func swap[T any](a, b T) (T, T) {
+	return b, a
+}
+func main() {
+	fmt.Println(Length([]int{1, 2, 3, 4}))       // Output: 4
+	fmt.Println(Length([]string{"a", "b", "c"})) // Output: 3
+	x, y := swap(1, 2)
+	fmt.Println(x, y)
+	fmt.Println(swap("hello", "world")) // Output: world hello
+}

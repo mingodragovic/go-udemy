@@ -1,0 +1,46 @@
+package main 
+
+
+import "fmt"
+// interfaces.go
+// Define an interface
+type Animal interface {
+	Speak() string
+}
+// Define a struct that implements the interface
+type Dog struct{}
+func (d Dog) Speak() string {
+	return "Woof!"
+}
+// Define another struct that implements the interface
+type Cat struct{}
+func (c Cat) Speak() string {
+	return "Meow!"
+}
+
+type geometry interface {
+	area() float64
+	perimeter() float64
+}	
+// Define a struct that implements the geometry interface
+type Rectangle struct {
+	width, height float64
+}
+func (r Rectangle) area() float64 {
+	return r.width * r.height
+}
+func (r Rectangle) perimeter() float64 {
+	return 2 * (r.width + r.height)
+}
+func main() {
+	var a Animal = Dog{}
+	fmt.Println(a.Speak()) // Output: Woof!
+	b := Cat{}
+	fmt.Println(b.Speak()) // Output: Meow!
+	// --------------------------
+	var g geometry = Rectangle{width: 5, height: 10}
+	fmt.Println("Area:", g.area())
+	fmt.Println("Perimeter:", g.perimeter()) // Output: Perimeter: 30
+	// --------------------------
+
+}

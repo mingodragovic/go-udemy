@@ -1,0 +1,40 @@
+package main
+
+import "fmt"
+
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+
+// method with value receiver
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+
+// method example using pointer receiver
+func (r *Rectangle) Scale(factor float64) {
+	r.Width = r.Width * factor
+	r.Height = r.Height * factor
+}
+
+func main() {
+	// here we are creating an instance of Rectangle and calling the Area method
+	rect := Rectangle{Width: 10, Height: 5}
+	area := rect.Area()
+	println("Area of rectangle:", area)
+
+// why does the area have a value of Area of rectangle: +5.000000e+001 ?
+	fmt.Printf("Area of rectangle: %e\n", area)
+		fmt.Printf("Area of rectangle: 	%.0f\n", area)
+		fmt.Printf("Area of rectangle2: %d\n", int(area))
+
+	// debugging output to see the exact value
+	fmt.Printf("Area of rectangle (float): %f\n", area)
+
+
+	// Scaling the rectangle
+	rect.Scale(2)
+	fmt.Println("Scaled rectangle area:", rect.Area())
+
+}
